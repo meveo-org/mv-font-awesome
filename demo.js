@@ -1,8 +1,8 @@
 import { LitElement, html, css } from "lit-element";
-import "./mv-fontawesome.js";
-import { SOLID, REGULAR, BRANDS } from "./mv-fontawesome.js";
+import "./mv-font-awesome.js";
+import { SOLID, REGULAR, BRANDS } from "./mv-font-awesome.js";
 
-export class MvFontawesomeDemo extends LitElement {
+export class MvFontAwesomeDemo extends LitElement {
   static get properties() {
     return {
       value: { type: String, attribute: true }
@@ -92,4 +92,4 @@ export class MvFontawesomeDemo extends LitElement {
   }
 }
 
-customElements.define("mv-fa-demo", MvFontawesomeDemo);
+customElements.define("mv-fa-demo", MvFontAwesomeDemo);
