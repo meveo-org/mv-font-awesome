@@ -6,7 +6,7 @@ export class MvFontAwesomeDemo extends LitElement {
   static get properties() {
     return {
       value: { type: String, attribute: true },
-      open: { type: Boolean, attribute: true }
+      theme: { type: String, attribute: true }
     };
   }
 
@@ -43,41 +43,54 @@ export class MvFontAwesomeDemo extends LitElement {
       .fs1 {
         font-size: 20px;
       }
-
+      
+      fieldset > label, label > input {
+        cursor: pointer;
+      }
+      
+      fieldset {
+        width: 120px;
+        margin-left: 10px;
+        border:2px solid red;
+        -moz-border-radius:8px;
+        -webkit-border-radius:8px;	
+        border-radius:8px;
+        color: #818181;
+      }
+      
+      legend {
+        font-weight: 500;
+        color: red;
+      }
+      
+      .dark {
+        background-color: #373E48;
+        color: #FFFFFF;
+      }
+      
       /* sample for overriding style */
       mv-fa {
         font-size: 24px;
         color: #2196F3;
-      }
-      
-      .theme mv-fa {
-        font-size: 50px;
-        cursor: pointer;
-        margin: 20px;
-        z-index: 100;
-      }
-      
-      .theme {
-        display: flex;
-        justify-content: flex-start;
       }
     `;
   }
 
   constructor() {
     super();
-    this.open = true;
+    this.theme = "light";
   }
 
   render() {
-    const iconColor = `color: ${this.open ? "yellow" : ""}`;
-    const backgroundColor = `background-color: ${this.open ? "" : "#373E48"}`;
-    const color = `color: ${this.open ? "" : "#FFFFFF"}`;
+    const isLightTheme = this.theme === "light";
+    const color = `color: ${isLightTheme ? "" : "#FFFFFF"}`;
     return html`
-      <div style="${backgroundColor}; ${color}">
-        <div class="theme">
-          <mv-fa icon="lightbulb" style="${iconColor}" @click=${this.toggleLightBulb}></mv-fa>
-        </div>
+      <div class="${this.theme}">
+        <fieldset>
+          <legend>Theme</legend>
+          <label><input type="radio" name="theme" value="light" checked @change="${this.radioChange}" />Light</label>
+          <label><input type="radio" name="theme" value="dark" @change="${this.radioChange}" />Dark</label>
+        </fieldset>
         <h2>Solid icons</h2>
         <div class="clearfix">
         ${SOLID.map(
@@ -121,9 +134,9 @@ export class MvFontAwesomeDemo extends LitElement {
     `;
   }
 
-  toggleLightBulb = () => {
-    this.open = !this.open;
-    if (this.open) {
+  radioChange = originalEvent => {
+    const { target: { value } } = originalEvent;
+    if (value === "light") {
       this.theme = "light";
     } else {
       this.theme = "dark";
