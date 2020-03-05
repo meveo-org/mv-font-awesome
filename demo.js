@@ -71,6 +71,9 @@ export class MvFontAwesomeDemo extends LitElement {
       /* sample for overriding style */
       mv-fa {
         font-size: 24px;
+      }
+      
+      .light mv-fa {
         color: #2196F3;
       }
     `;
@@ -82,14 +85,12 @@ export class MvFontAwesomeDemo extends LitElement {
   }
 
   render() {
-    const isLightTheme = this.theme === "light";
-    const color = `color: ${isLightTheme ? "" : "#FFFFFF"}`;
     return html`
       <div class="${this.theme}">
         <fieldset>
           <legend>Theme</legend>
-          <label><input type="radio" name="theme" value="light" checked @change="${this.radioChange}" />Light</label>
-          <label><input type="radio" name="theme" value="dark" @change="${this.radioChange}" />Dark</label>
+          <label><input type="radio" name="theme" value="light" checked @change="${this.changeTheme}" />Light</label>
+          <label><input type="radio" name="theme" value="dark" @change="${this.changeTheme}" />Dark</label>
         </fieldset>
         <h2>Solid icons</h2>
         <div class="clearfix">
@@ -97,7 +98,7 @@ export class MvFontAwesomeDemo extends LitElement {
           icon => html`        
           <div class="glyph fs1">
             <div class="clearfix">
-              <mv-fa icon="${icon}" style="${color}"></mv-fa>
+              <mv-fa icon="${icon}"></mv-fa>
               <span class="mls"> ${icon}</span>
             </div>
           </div>
@@ -110,7 +111,7 @@ export class MvFontAwesomeDemo extends LitElement {
           icon => html`        
           <div class="glyph fs1">
             <div class="clearfix">
-              <mv-fa icon="${icon}" regular style="${color}"></mv-fa>
+              <mv-fa icon="${icon}" regular></mv-fa>
               <span class="mls"> ${icon}</span>
             </div>
           </div>
@@ -123,7 +124,7 @@ export class MvFontAwesomeDemo extends LitElement {
           icon => html`
           <div class="glyph fs1">
             <div class="clearfix">
-              <mv-fa icon="${icon}" style="${color}"></mv-fa>
+              <mv-fa icon="${icon}"></mv-fa>
               <span class="mls"> ${icon}</span>
             </div>
           </div>
@@ -134,13 +135,9 @@ export class MvFontAwesomeDemo extends LitElement {
     `;
   }
 
-  radioChange = originalEvent => {
+  changeTheme = originalEvent => {
     const { target: { value } } = originalEvent;
-    if (value === "light") {
-      this.theme = "light";
-    } else {
-      this.theme = "dark";
-    }
+    this.theme = value;
   };
 }
 
