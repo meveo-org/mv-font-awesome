@@ -7424,9 +7424,11 @@ export class MvFontAwesome extends LitElement {
   }
 
   render() {
+    const {icon, prefix, showIcon, ...otherProps};
+    const faProps = otherProps.join(" ");
     return this.showIcon
       ? html`    
-        <i class="${this.prefix} fa-${this.icon}"></i>
+        <i class="${this.prefix} fa-${this.icon} ${faProps}"></i>
       `
       : html``;
   }
