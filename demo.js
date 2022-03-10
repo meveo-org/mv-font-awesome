@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit";
 import "./mv-font-awesome.js";
 import { SOLID, REGULAR, BRANDS } from "./mv-font-awesome.js";
 
