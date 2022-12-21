@@ -1,6 +1,6 @@
 {
   "name": "@meveo-org/mv-font-awesome",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MvFontAwesome is a Meveo icon component (based on lit-element) that renders [Font Awesome Free](https://github.com/FortAwesome/Font-Awesome) library icons.",
   "main": "mv-font-awesome.js",
   "scripts": {
