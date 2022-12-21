@@ -58,6 +58,10 @@ To experiment with the MvFontAwesome component.
           url("{REPLACE_WITH_PATH_TO}/fonts/fa-solid-900.svg#fontawesome") format("svg");
       }
     </style>
+
+    OR
+
+    <link rel="stylesheet" href="node_modules/@meveo-org/mv-font-awesome/fonts.css">
     ```
 
 4. View the index.html to see available icons, then use the component to load the chosen icon e.g.
